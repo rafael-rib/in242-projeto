@@ -6,8 +6,8 @@ from datetime import datetime
 
 # Configura MQTT broker (Docker)
 mqtt_client = mqtt.Client()
-mqtt_client.connect('localhost', 1883) # para teste Local
-# mqtt_client.connect('18.229.94.95', 1883) # Broker no servidor da AWS
+# mqtt_client.connect('localhost', 1883) # para teste Local
+mqtt_client.connect('18.229.94.95', 1883) # Broker no servidor da AWS
 
 # Prepara e envia mensagem para o MQTT Broker do Docker
 def envia_mens(quant):
@@ -23,7 +23,7 @@ def envia_mens(quant):
    print(mensagem,'\nMensagem enviada...')
 
 # Gera trigger a cada x segundos
-loop = InterruptableLoop(intervalSecs=1)  # Controla delay do triger e comando de parada
+loop = InterruptableLoop(intervalSecs=10)  # Controla delay do triger e comando de parada
 
 while loop.ShouldContinue():        # Continua repetição enquanto não for interrompida manualmente
     sensor = random.randint(0, 15)  # Simula buffer do sensor de contagem a cada 10 segundos
